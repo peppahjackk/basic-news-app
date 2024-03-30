@@ -7,6 +7,8 @@ export const NewsItemDetail = () => {
   const { news } = useContext(NewsContext);
   const location = useLocation();
 
+
+  console.log('news', news)
   // The API doesn't give a way to get a single article by ID, so we need to
   // handle the case where the article is not found.
   // With more time we could refetch all then filter for the current article
