@@ -4,6 +4,8 @@ import {
   Card,
   CardActions,
   CardContent,
+  CardHeader,
+  CardMedia,
   Stack,
   Typography,
 } from "@mui/material";
@@ -21,29 +23,32 @@ export const NewsItemCard = ({ item }) => {
     navigate(`/news/${cleanTitle}`);
   };
 
+  const authorString = item.author ? `${item.author} - ` : '';
+
+  const dateAndAuthor = `${authorString}${new Date(
+    item.publishedAt
+  ).toLocaleString()}`;
+
   return (
-    <Card>
-      <CardContent>
-        <Stack spacing={2}>
-          <div>
-            <Typography variant="h5" component="h2">
-              {item.title}
+    <a onClick={handleClick}>
+      <Card>
+        <CardHeader title={item.title} subheader={dateAndAuthor} />
+        {item.urlToImage && (
+          <CardMedia component="img" image={item.urlToImage} alt={item.title} />
+        )}
+        <CardContent>
+          <Stack spacing={2}>
+            <Typography variant="body1" component="p">
+              {item.description}
             </Typography>
-            <Typography variant="body2" component="p">
-              {item.author ? `${item.author} - ` : null}
-              {new Date(item.publishedAt).toLocaleString()}
-            </Typography>
-          </div>
-          <Typography variant="body1" component="p">
-            {item.description}
-          </Typography>
-        </Stack>
-      </CardContent>
-      <CardActions>
-        <Button size="small" onClick={handleClick}>
-          Read More
-        </Button>
-      </CardActions>
-    </Card>
+          </Stack>
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={handleClick} variant="contained">
+            Read More
+          </Button>
+        </CardActions>
+      </Card>
+    </a>
   );
 };

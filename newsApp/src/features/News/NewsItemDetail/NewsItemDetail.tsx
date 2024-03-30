@@ -24,6 +24,7 @@ export const NewsItemDetail = () => {
             {news.author} - {new Date(news.publishedAt).toLocaleString()}
           </Typography>
         </div>
+        <img src={news.urlToImage} alt={news.title} />
         <Typography variant="body1" component="p">
           {news.content}
         </Typography>
