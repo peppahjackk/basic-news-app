@@ -21,7 +21,7 @@ export const NewsItemDetail = () => {
             {news.title}
           </Typography>
           <Typography variant="h6" component="h2">
-            {news.author} - {news.publishedAt}
+            {news.author} - {new Date(news.publishedAt).toLocaleString()}
           </Typography>
         </div>
         <Typography variant="body1" component="p">

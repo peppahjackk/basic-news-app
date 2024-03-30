@@ -1,7 +1,7 @@
 import React from "react";
 import { useNewsFeed } from "./hooks/useNewsFeed";
 import { NewsItemCard } from "./NewsItemCard/NewsItemCard";
-import { Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 
 export const NewsFeed = () => {
   const { data, isLoading, isError } = useNewsFeed();
@@ -17,14 +17,16 @@ export const NewsFeed = () => {
   return (
     <section>
       <h2>Top Headlines</h2>
-      <ul>
-        <Stack spacing={2}>
-          {data.articles.map((article) => {
-            if (article.title === "[Removed]") return null;
-            return <NewsItemCard key={article.title} item={article} />;
-          })}
-        </Stack>
-      </ul>
+      <Grid container spacing={2}>
+        {data.articles.map((article) => {
+          if (article.title === "[Removed]") return null;
+          return (
+            <Grid item xs={12} md={4} key={article.title}>
+              <NewsItemCard key={article.title} item={article} />
+            </Grid>
+          );
+        })}
+      </Grid>
     </section>
   );
 };

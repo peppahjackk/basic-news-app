@@ -31,7 +31,7 @@ export const NewsItemCard = ({ item }) => {
             </Typography>
             <Typography variant="body2" component="p">
               {item.author ? `${item.author} - ` : null}
-              {item.publishedAt}
+              {new Date(item.publishedAt).toLocaleString()}
             </Typography>
           </div>
           <Typography variant="body1" component="p">
