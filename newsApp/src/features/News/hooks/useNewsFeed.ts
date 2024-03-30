@@ -8,20 +8,34 @@ interface Response {
   articles: Article[];
 }
 
-const fetchNews = async (): Promise<Response> => {
+const fetchNews = async ({ search }): Promise<Response> => {
+  const searchParams = new URLSearchParams();
+
+  if (search !== "") {
+    searchParams.set("q", search);
+  }
+
+  let paramsString = searchParams.toString();
+
+  if (paramsString !== "") {
+    paramsString = `&${paramsString}`;
+  }
+
   const response = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${key}`
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${key}${paramsString}`
   );
   return response.json();
 };
 
-export const useNewsFeed = () => {
+export const useNewsFeed = ({ search }) => {
   // Access the client
   const queryClient = useQueryClient();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["newsFeed"],
-    queryFn: fetchNews,
+    queryKey: ["newsFeed", search],
+    queryFn: () => {
+      return fetchNews({ search });
+    },
   });
 
   return { data, isLoading, isError };

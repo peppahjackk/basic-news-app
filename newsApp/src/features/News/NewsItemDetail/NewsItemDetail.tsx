@@ -28,9 +28,9 @@ export const NewsItemDetail = () => {
           {news.content}
         </Typography>
         <Typography variant="h6" component="h2">
-          Read more at{" "}
+          To see the complete article, check it out at{" "}
           <a href={`${news.url}`} target="_blank">
-            the source here.
+            the source.
           </a>
         </Typography>
       </Stack>

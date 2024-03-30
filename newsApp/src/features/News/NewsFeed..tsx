@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNewsFeed } from "./hooks/useNewsFeed";
 import { NewsItemCard } from "./NewsItemCard/NewsItemCard";
 import { Grid } from "@mui/material";
 
-export const NewsFeed = () => {
-  const { data, isLoading, isError } = useNewsFeed();
+export const NewsFeed = ({ search }: { search: string }) => {
+  const { data, isLoading, isError } = useNewsFeed({ search });
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -16,7 +16,6 @@ export const NewsFeed = () => {
 
   return (
     <section>
-      <h2>Top Headlines</h2>
       <Grid container spacing={2}>
         {data.articles.map((article) => {
           if (article.title === "[Removed]") return null;
