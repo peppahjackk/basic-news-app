@@ -17,29 +17,27 @@ export const NewsItemCard = ({ item }) => {
   const cleanTitle = item.title.replace(/[^a-zA-Z0-9]/g, "");
 
   const handleClick = () => {
-    setNews({title: 'custom'});
+    setNews(item);
     navigate(`/news/${cleanTitle}`);
   };
+
   return (
     <Card>
       <CardContent>
-        <Typography variant="h5" component="h2">
-          {item.title}
-        </Typography>
-        <Stack direction="row" spacing={2}>
-          <Typography variant="body2" component="p">
-            {item.author} -
-          </Typography>
-          <Typography variant="body2" component="p">
-            {item.publishedAt}
+        <Stack spacing={2}>
+          <div>
+            <Typography variant="h5" component="h2">
+              {item.title}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {item.author ? `${item.author} - ` : null}
+              {item.publishedAt}
+            </Typography>
+          </div>
+          <Typography variant="body1" component="p">
+            {item.description}
           </Typography>
         </Stack>
-        <Typography variant="body1" component="p">
-          {item.description}
-        </Typography>
-        <Typography variant="body2" component="p">
-          via {item.source.name}
-        </Typography>
       </CardContent>
       <CardActions>
         <Button size="small" onClick={handleClick}>

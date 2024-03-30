@@ -1,17 +1,14 @@
 import React, { createContext, ReactElement, useState } from "react";
+import { Article } from "./types";
 
 interface NewsState {
-  news: {
-    title: string;
-  };
-  setNews: (news: { title: string }) => void; // Adjust this to match the expected argument structure
+  news?: Article;
+  setNews: (news: Article) => void; // Adjust this to match the expected argument structure
 }
 
 const initialState: NewsState = {
-  news: {
-    title: "",
-  },
-  setNews: (news: { title: string }) => {}, // Provide a dummy function for initial state
+  news: undefined,
+  setNews: () => {}, // Provide a dummy function for initial state
 };
 
 export const NewsContext = createContext<NewsState>(initialState);
