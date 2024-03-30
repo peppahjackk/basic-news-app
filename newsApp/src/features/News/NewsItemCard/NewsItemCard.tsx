@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Card,
@@ -7,9 +7,19 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Article } from "../types";
+import { useNavigate } from "react-router-dom";
+import { NewsContext } from "../NewsContextProvider";
 
 export const NewsItemCard = ({ item }) => {
+  const navigate = useNavigate();
+  const { setNews } = useContext(NewsContext);
+
+  const cleanTitle = item.title.replace(/[^a-zA-Z0-9]/g, "");
+
+  const handleClick = () => {
+    setNews({title: 'custom'});
+    navigate(`/news/${cleanTitle}`);
+  };
   return (
     <Card>
       <CardContent>
@@ -32,7 +42,9 @@ export const NewsItemCard = ({ item }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Read More</Button>
+        <Button size="small" onClick={handleClick}>
+          Read More
+        </Button>
       </CardActions>
     </Card>
   );
