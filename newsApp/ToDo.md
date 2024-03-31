@@ -1,3 +1,0 @@
-- [x] Fix reload
-- [x] Add link back to home
-- [ ] Host on github
