@@ -2,16 +2,14 @@
 
 By: Ted Moke, [iam@tedmoke.com](mailto:iam@tedmoke.com)
 
-## Usage
-
-### The Two Challenges
+## The Two Challenges
 
 1. To run the code for challenges 1 and 2, open the root of this repo in you command line
 2. Make sure you have node installed, if you don't see the website [https://nodejs.org/en/download](https://nodejs.org/en/download)
 3. Run `node problem_1-matrixSum.js`
 4. Run `node problem_2-findOptimalChange.js`
 
-### A Basic News Application
+## A Basic News Application
 
 The application will let you browse the top news headlines of the day sourced from a remote API. The main screen shows a list of cards describing each news article and a brief description. Each card also gives the user the ability to read more by clicking the read more button you can see the article in more detail and from there you can be linked to the original article.
 
